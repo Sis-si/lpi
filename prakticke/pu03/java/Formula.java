@@ -2,50 +2,58 @@ import java.util.Set;
 import java.util.List;
 
 class Constant {
+    private String name;
+
     public Constant(String name) {
-        throw new RuntimeException("Not implemented");
+        this.name = name();
     }
 
     public String name() {
-        throw new RuntimeException("Not implemented");
+        return name;
     }
 
     public String eval(Structure m) {
-        throw new RuntimeException("Not implemented");
+        return m.iC(name());
     }
 
     @Override
     public String toString() {
-        throw new RuntimeException("Not implemented");
+        return name;
     }
 
     @Override
     public boolean equals(Object other) {
-        throw new RuntimeException("Not implemented");
+        if (getClass() != other.getClass()) return false;
+        Constant otherC = (Constant) other;
+        return name() == otherC.name();
     }
 }
 
 class Formula {
+    private Formula formula;
+
     public List<Formula> subfs() {
         throw new RuntimeException("Not implemented");
     }
 
     @Override
     public String toString() {
-        throw new RuntimeException("Not implemented");
+        return "" + formula;
     }
 
     public boolean isTrue(Structure m) {
-        throw new RuntimeException("Not implemented");
+        return true;
     }
 
     @Override
     public boolean equals(Object other) {
-        throw new RuntimeException("Not implemented");
+        if (getClass() != other.getClass()) return false;
+        Formula otherF = (Formula) other;
+        return formula == otherF;
     }
 
     public int deg() {
-        throw new RuntimeException("Not implemented");
+        return 1;
     }
 
     public Set<AtomicFormula> atoms() {
@@ -63,84 +71,84 @@ class Formula {
 
 class AtomicFormula extends Formula {
     AtomicFormula() {
-        throw new RuntimeException("Not implemented");
     }
 }
 
 class PredicateAtom extends AtomicFormula {
     PredicateAtom(String name, List<Constant> args) {
-        throw new RuntimeException("Not implemented");
+        name = super(name);
+        args = super(args);
     }
 
     String name() {
-        throw new RuntimeException("Not implemented");
+        return name;
     }
 
     List<Constant> arguments() {
-        throw new RuntimeException("Not implemented");
+        return args;
     }
 }
 
 class EqualityAtom extends AtomicFormula {
     EqualityAtom(Constant left, Constant right) {
-        throw new RuntimeException("Not implemented");
+        Constant l = super(left);
+        Constant r = super(right);
     }
 
     Constant left() {
-        throw new RuntimeException("Not implemented");
+        return l;
     }
 
     Constant right() {
-        throw new RuntimeException("Not implemented");
+        return l;
     }
 }
 
 class Negation extends Formula {
     Negation(Formula originalFormula) {
-        throw new RuntimeException("Not implemented");
+        originalFormula = super(originalFormula);
     }
 
     public Formula originalFormula() {
-        throw new RuntimeException("Not implemented");
+        return originalFormula;
     }
 }
 
 class Disjunction extends Formula {
     Disjunction(List<Formula> disjuncts) {
-        throw new RuntimeException("Not implemented");
+        super(disjuncts);
     }
 }
 
 class Conjunction extends Formula {
     Conjunction(List<Formula> disjuncts) {
-        throw new RuntimeException("Not implemented");
+        super(disjuncts);
     }
 }
 
 class BinaryFormula extends Formula {
     BinaryFormula(Formula left, Formula right) {
-        throw new RuntimeException("Not implemented");
+        Formula l = super(left);
+        Formula r = super(right);
     }
 
     public Formula leftSide() {
-        throw new RuntimeException("Not implemented");
+        return l;
     }
 
     public Formula rightSide() {
-        throw new RuntimeException("Not implemented");
+        return r;
     }
 }
 
 class Implication extends BinaryFormula {
     Implication(Formula left, Formula right) {
         super(left, right);
-        throw new RuntimeException("Not implemented");
     }
 }
 
 class Equivalence extends BinaryFormula {
     Equivalence(Formula left, Formula right) {
         super(left, right);
-        throw new RuntimeException("Not implemented");
     }
 }
